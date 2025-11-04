@@ -1,1 +1,59 @@
-🚀 Data Lakehouse Escalável e Seguro (Streaming & Medallion Architecture)🌟 Visão Geral do ProjetoEste projeto demonstra a construção de uma Arquitetura Data Lakehouse de ponta a ponta, escalável e segura, projetada para processar dados de streaming em tempo (quase) real.O pipeline utiliza a Arquitetura Medallion (Bronze, Silver, Gold) para garantir a integridade, rastreabilidade e qualidade dos dados, culminando em insights acionáveis para análise preditiva e Business Intelligence (BI).💡 Stack TecnológicoCategoriaFerramentaUso no ProjetoPlataforma/ComputaçãoDatabricksDesenvolvimento e execução de Jobs de ETL/ELT e orquestração.Data LakehouseDelta LakeArmazenamento de dados, garantindo confiabilidade, transações ACID e performance otimizada.LinguagemPython / SQLDesenvolvimento dos Jobs de processamento.SegurançaVariáveis de Ambiente / Secret ManagementAutenticação segura do workspace e isolamento de credenciais.VisualizaçãoPower BIConsumo da camada Gold para criação de dashboards de negócio.Análise AvançadaModelos de Text AnalysisGeração de scores de sentimento.🏗️ Arquitetura Medallion em DetalhesO projeto implementa rigorosamente o padrão Medallion para garantir um fluxo de dados limpo e confiável:🥉 Camada Bronze (Raw)Função: Ingestão de dados brutos e imutáveis (raw data), mantendo a fonte original.Características: Dados com formato e tipo originais da fonte (streaming).🥈 Camada Silver (Cleaned & Enriched)Função: Limpeza, padronização e enriquecimento dos dados brutos.Regras: Aplicação de regras de qualidade de dados (remoção de duplicatas, tratamento de nulos).Enriquecimento: Inclusão de Análise de Sentimento (scores) via modelos de Text Analysis no pipeline de processamento.🥇 Camada Gold (Curated & Consumable)Função: Dados Curados, modelados (ex: Star Schema) e otimizados para consumo de BI/ML.Características: Camada final de consumo, exposta ao Power BI para geração de relatórios e análises preditivas.🛡️ Foco em SegurançaA segurança e o gerenciamento de credenciais foram priorizados:Autenticação Segura: Utilização de variáveis de ambiente (env key) para autenticar o workspace do Databricks.Melhores Práticas: Acesso a recursos externos é feito via gerenciamento de segredos para garantir o isolamento de credenciais e evitar hardcoding.📈 Insights e Métricas ChaveO pipeline gera informações de alto valor, focando na saúde do dado e em insights de negócio:Monitoramento de Qualidade: Criação e rastreamento de métricas como a Latência de Ingestão, garantindo a pontualidade dos dados de streaming.Análise de Tendências: Extração e persistência de Top Keywords para identificar rapidamente os tópicos mais relevantes nos dados de streaming.Análise Preditiva: Utilização dos scores de Sentimento gerados na camada Silver para permitir a análise de tendências de humor do usuário em tempo (quase) real.🔗 ConclusãoEste projeto demonstra a capacidade de construir e gerenciar uma arquitetura Data Lakehouse complexa, garantindo confiabilidade (Delta Lake), escalabilidade (Databricks) e inteligência analítica (Sentimento) para suportar decisões de negócio baseadas em dados de alta qualidade e pontualidade.
+# 🚀 Data Lakehouse Escalável e Seguro (Streaming & Medallion Architecture)
+
+## 🌟 Visão Geral do Projeto
+
+Este projeto pessoal complexo demonstra o desenvolvimento de uma **Arquitetura Data Lakehouse de ponta a ponta**, robusta, escalável e segura. O foco foi no processamento de **dados de *streaming***, garantindo pontualidade e integridade da informação.
+
+A arquitetura foi cuidadosamente desenvolvida para transformar dados brutos em *insights* de alto valor, utilizando o padrão de camadas da indústria para excelência em Engenharia de Dados.
+
+## 💡 Stack Tecnológico (Data Engineering)
+
+| Categoria | Ferramenta | Uso no Projeto |
+| :--- | :--- | :--- |
+| **Plataforma/Computação** | Databricks | Desenvolvimento, execução (Jobs de ETL/ELT) e orquestração do pipeline de dados. |
+| **Data Lakehouse** | Delta Lake | Armazenamento de dados, garantindo confiabilidade, *schema enforcement* e transações **ACID**. |
+| **Segurança/Credenciais** | Variáveis de Ambiente (*env key*) | Autenticação segura do *workspace* e gerenciamento de segredos para acesso a recursos externos. |
+| **Consumo/Visualização** | Power BI | *Frontend* de BI para visualização da camada **Gold** e tomada de decisão. |
+| **Linguagens** | Python / SQL | Implementação dos processos de transformação (ETL/ELT). |
+
+## 🏗️ Arquitetura Medallion: Integridade e Rastreabilidade
+
+O pipeline foi estruturado seguindo o padrão **Medallion Architecture** (Bronze, Silver, Gold), garantindo rastreabilidade e integridade em cada etapa:
+
+### 🥉 Camada Bronze (Raw)
+* **Função:** Ingestão de dados brutos e imutáveis (*immutable data*) diretamente da fonte de *streaming*.
+* **Características:** Mínima transformação (apenas metadados de ingestão), preservando o registro original.
+
+### 🥈 Camada Silver (Cleaned & Enriched)
+* **Função:** Aplicação de **Regras de Qualidade de Dados**, limpeza, padronização e enriquecimento do conjunto de dados.
+* **Processos:** Tratamento de nulos, remoção de duplicatas e estruturação.
+* **Análise de Sentimento:** Implementação de modelos de *Text Analysis* para extrair e persistir *scores* de sentimento, transformando dados textuais em métricas acionáveis.
+
+### 🥇 Camada Gold (Curated & Consumable)
+* **Função:** Dados modelados e otimizados (ex: *Star Schema*) para consumo de BI e *Machine Learning*.
+* **Características:** Alta performance, estruturas consolidadas e prontas para exposição no Power BI, garantindo que as decisões de negócio sejam baseadas em dados curados.
+
+## 🛡️ Segurança e Boas Práticas (Best Practices)
+
+A segurança foi um pilar desde o desenvolvimento:
+
+* **Isolamento de Credenciais:** O acesso ao Databricks foi autenticado com sucesso utilizando **variáveis de ambiente (`env key`)**, seguindo rigorosamente as melhores práticas de gerenciamento de segredos.
+* **Controle de Acesso:** Garantia de conexão segura e isolamento de acessos entre ambientes (desenvolvimento/produção).
+
+## 📊 Qualidade de Dados e Monitoramento
+
+Métricas analíticas avançadas e indicadores de monitoramento foram desenvolvidos para garantir a saúde do dado:
+
+| Métrica de Monitoramento | Descrição | Valor Analítico |
+| :--- | :--- | :--- |
+| **Latência de Ingestão** | Tempo de processamento dos dados de *streaming*. | Garante a pontualidade da informação para análise em tempo real. |
+| **Top Keywords** | Extração de termos mais frequentes nos dados textuais. | Análise de tendências e *feedback* do usuário em tempo real. |
+| **Scores de Sentimento** | Classificação do tom emocional do texto. | Base para **análise preditiva** de comportamento do cliente ou produto. |
+
+## 🔗 Do Data Lakehouse ao Insight
+
+O projeto cumpre a missão de conectar a **Engenharia de Dados de Alto Nível** ao **Valor de Negócio**, transformando dados de *streaming* complexos em um *dashboard* de alta qualidade no Power BI.
+
+O resultado é um sistema robusto que permite que a empresa tome decisões baseadas em informações confiáveis, atuais e ricas em *insights* de **Análise Preditiva**.
+
+---
